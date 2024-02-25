@@ -40,14 +40,6 @@
                                 <input type="password" name="pass2" id="pass2" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label for="gender" class="text-info">Genero:</label><br>
-                                <select class="custom-select" name="gender">
-                                    <option value="M">M</option>
-                                    <option value="F">F</option>
-                                    
-                                </select>
-                            </div>
-                            <div class="form-group">
                                 <input type="submit" name="submit" class="btn btn-info btn-md" value="Submit">
                             </div>
                         </form>
