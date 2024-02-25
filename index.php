@@ -22,28 +22,26 @@
     </head>
     <body>
         <div class="container-xl" id="content">
-            <div class="align-items-center">
-                <div class="row justify-content-center align-items-center">
-                    <div id="box" class="col-md-8">
-                        <form id="login-form" class="form" action="register.php" method="post">
-                            <h3 class="text-center text-info">Login</h3>
-                            <div class="form-group">
-                                <label for="username" class="text-info">Username:</label><br>
-                                <input type="text" name="user" id="username" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label for="password" class="text-info">Password:</label><br>
-                                <input type="password" name="pass" id="pass" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label for="password" class="text-info">Confirm Password:</label><br>
-                                <input type="password" name="pass2" id="pass2" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <input type="submit" name="submit" class="btn btn-info btn-md" value="Submit">
-                            </div>
-                        </form>
-                    </div>
+            <div class="row justify-content-center align-items-center">
+                <div id="box" class="col-md-8">
+                    <form id="login-form" class="form" action="back\register.php" method="post">
+                        <h3 class="text-center text-info">Login</h3>
+                        <div class="form-group">
+                            <label for="username" class="text-info">Username:</label><br>
+                            <input type="text" name="user" id="username" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="password" class="text-info">Password:</label><br>
+                            <input type="password" name="pass" id="pass" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="password" class="text-info">Confirm Password:</label><br>
+                            <input type="password" name="pass2" id="pass2" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" name="submit" class="btn btn-info btn-md" value="Submit">
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
