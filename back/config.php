@@ -4,5 +4,5 @@
 
 'server' => "127.0.0.1",
 'user' => "LPCS",
-'pass' => "M.[t_C5y8h8F(_Yv",
+'pass' => "!q4s/PMXESeTk20x",
 'db' => "LPCS");
