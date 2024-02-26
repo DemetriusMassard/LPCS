@@ -19,18 +19,17 @@
         $sql = "INSERT INTO USERS (USER, PASS) VALUES('" . $userUsername . "', '" . $userPassHashed. "')  ";
         try{    
             $conn = new mysqli($server, $user, $pass, $db);
-            if($conn->connect_errno){
-                echo "Failed". $conn->connect_error;
-            }else{
-                if($conn->query($sql)){
-                    echo '<script language="javascript">';
-                    echo 'alert("Registrado com sucesso!")';
-                    echo '</script>';
-                }
+            if($conn->query($sql)){
+                echo '<script language="javascript">';
+                echo 'alert("Registrado com sucesso!")';
+                echo '</script>';
             }
+            
             
             $conn->close();
         }catch(mysqli_sql_exception $e){
-            echo "". $e->getMessage();
+            echo "Error code: ". $e->getCode() . "<br>";
+            echo "Error message: ". $e->getMessage();
+            
         }
     }
