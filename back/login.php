@@ -3,7 +3,11 @@
     $config = require "config.php";
     $userUsername = $_POST["user"];
     $userPass = $_POST["pass"];
-    
+    $addr = $_SERVER['SERVER_NAME'];
+
+    $pepper = $config['pepper'];
+    $userPassPeppered = hash_hmac("sha256", $userPass,$pepper);
+
     $server = $config['server'];
     $user = $config['user'];
     $pass = $config['pass'];
@@ -14,15 +18,16 @@
     try{    
         $conn = new mysqli($server, $user, $pass, $db);
         $result = $conn->query($sql);
-        echo '<script language="javascript">';
-        echo 'alert("' . $result->num_rows . '")';
-        echo '</script>';
         if($result->num_rows == 1){
             while ($row = $result->fetch_assoc()){
-                if(password_verify($userPass, $row['pass'])){
-                    echo "1";
+                
+                if(password_verify($userPassPeppered, $row['pass'])){
+                    @session_start();
+                    header('location:..\dashboard.php');
+                    exit();
                 }else{
-                    echo "0";
+                    header('location:..\index.php');
+                    exit();
                 }
             }
         }
