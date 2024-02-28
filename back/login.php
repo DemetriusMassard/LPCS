@@ -1,8 +1,8 @@
 <?php
 
     $config = require "config.php";
-    $userUsername = $_POST["user"];
-    $userPass = $_POST["pass"];
+    $userUsername = htmlspecialchars($_POST["user"],FILTER_FLAG_ENCODE_AMP);
+    $userPass = htmlspecialchars($_POST["pass"],FILTER_FLAG_ENCODE_AMP);
     $addr = $_SERVER['SERVER_NAME'];
 
     $pepper = $config['pepper'];
@@ -23,10 +23,13 @@
                 
                 if(password_verify($userPassPeppered, $row['pass'])){
                     @session_start();
-                    header('location:..\dashboard.php');
+                    $_SESSION['user'] = $userUsername;
+                    
+                    header ('location:http://'.$_SERVER['HTTP_HOST'].'/lpcs/dashboard.php');
                     exit();
                 }else{
-                    header('location:..\index.php');
+                    header('location:http://'. $_SERVER['SERVER_NAME'] .'/lpcs/index.php');
+                    echo'2';
                     exit();
                 }
             }

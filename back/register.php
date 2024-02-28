@@ -1,8 +1,8 @@
 <?php
     $config = require "config.php";
-    $userUsername = $_POST["user"];
-    $userPass = $_POST["pass"];
-    $userPass2 = $_POST["pass2"];
+    $userUsername = htmlspecialchars($_POST["user"],FILTER_FLAG_ENCODE_AMP);
+    $userPass = htmlspecialchars($_POST["pass"],FILTER_FLAG_ENCODE_AMP);
+    $userPass2 = htmlspecialchars($_POST["pass2"],FILTER_FLAG_ENCODE_AMP);
 
     if($userPass = $userPass2){
     
@@ -19,12 +19,14 @@
         $sql = "INSERT INTO USERS (USER, PASS) VALUES('" . $userUsername . "', '" . $userPassHashed. "')  ";
         try{    
             $conn = new mysqli($server, $user, $pass, $db);
-            if($conn->query($sql)){
+            /*if($conn->query($sql)){
                 echo '<script language="javascript">';
                 echo 'alert("Registrado com sucesso!")';
                 echo '</script>';
-            }
-            
+            }*/
+            echo '<script language="javascript">';
+            echo 'alert("'. $userPass.'")';
+            echo '</script>';
             
             $conn->close();
         }catch(mysqli_sql_exception $e){

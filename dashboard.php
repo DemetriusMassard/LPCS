@@ -33,6 +33,8 @@
                     <?php
                         if (session_status() == PHP_SESSION_ACTIVE) {
                             echo 'Session is active';
+                        }elseif(session_status() == PHP_SESSION_NONE) {
+                            echo 'Session is closed';
                         }
 
                     ?>
