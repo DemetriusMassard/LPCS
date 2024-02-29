@@ -17,16 +17,15 @@
 
 
         $sql = "INSERT INTO USERS (USER, PASS) VALUES('" . $userUsername . "', '" . $userPassHashed. "')  ";
+        
         try{    
             $conn = new mysqli($server, $user, $pass, $db);
-            /*if($conn->query($sql)){
+            if($conn->query($sql)){
                 echo '<script language="javascript">';
                 echo 'alert("Registrado com sucesso!")';
                 echo '</script>';
-            }*/
-            echo '<script language="javascript">';
-            echo 'alert("'. $userPass.'")';
-            echo '</script>';
+            }
+            $sql = "INSERT INTO PATHS (prevID, name) VALUES(1, '" . $userUsername . "')  ";
             
             $conn->close();
         }catch(mysqli_sql_exception $e){

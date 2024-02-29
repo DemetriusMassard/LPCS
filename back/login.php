@@ -25,11 +25,10 @@
                     @session_start();
                     $_SESSION['user'] = $userUsername;
                     
-                    header ('location:http://'.$_SERVER['HTTP_HOST'].'/lpcs/dashboard.php');
+                    header ('location:http://'. $_SERVER['HTTP_HOST'] .'/lpcs/dashboard.php');
                     exit();
                 }else{
-                    header('location:http://'. $_SERVER['SERVER_NAME'] .'/lpcs/index.php');
-                    echo'2';
+                    header('location:http://'. $_SERVER['HTTP_HOST'] .'/lpcs/index.php');
                     exit();
                 }
             }
