@@ -1,7 +1,11 @@
 <?php
     
     
-        require 'changeFolder.php';
+    
+        if(isset($_POST["folder"])){
+            $_SESSION['folder'] = $_POST['folder'];
+        }
+        
         $config = require "config.php";
         $server = $config['server'];
         $user = $config['user'];
