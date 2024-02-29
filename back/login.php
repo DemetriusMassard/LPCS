@@ -3,7 +3,6 @@
     $config = require "config.php";
     $userUsername = htmlspecialchars($_POST["user"],FILTER_FLAG_ENCODE_AMP);
     $userPass = htmlspecialchars($_POST["pass"],FILTER_FLAG_ENCODE_AMP);
-    $addr = $_SERVER['SERVER_NAME'];
 
     $pepper = $config['pepper'];
     $userPassPeppered = hash_hmac("sha256", $userPass,$pepper);
@@ -24,16 +23,15 @@
                 if(password_verify($userPassPeppered, $row['pass'])){
                     @session_start();
                     $_SESSION['user'] = $userUsername;
-                    
+                    require 'getRoot.php';
                     header ('location:http://'. $_SERVER['HTTP_HOST'] .'/lpcs/dashboard.php');
-                    exit();
-                }else{
-                    header('location:http://'. $_SERVER['HTTP_HOST'] .'/lpcs/index.php');
                     exit();
                 }
             }
         }
         $conn->close();
+        header('location:http://'. $_SERVER['HTTP_HOST'] .'/lpcs/index.php');
+        exit();
     }catch(mysqli_sql_exception $e){
         echo "Error code: ". $e->getCode() . "<br>";
         echo "Error message: ". $e->getMessage();
