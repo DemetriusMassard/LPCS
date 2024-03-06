@@ -1,0 +1,5 @@
+PEPPER='PEPPER'
+server="localhost"
+user="user"
+pass="pass"
+db="Database"
