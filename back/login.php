@@ -1,16 +1,16 @@
 <?php
 
-    $config = require "config.php";
+    require "config.php";
     $userUsername = htmlspecialchars($_POST["user"],FILTER_FLAG_ENCODE_AMP);
     $userPass = htmlspecialchars($_POST["pass"],FILTER_FLAG_ENCODE_AMP);
 
-    $pepper = $config['pepper'];
+    $pepper = $_ENV['pepper'];
     $userPassPeppered = hash_hmac("sha256", $userPass,$pepper);
 
-    $server = $config['server'];
-    $user = $config['user'];
-    $pass = $config['pass'];
-    $db = $config['db'];
+    $server = $_ENV['server'];
+    $user = $_ENV['user'];
+    $pass = $_ENV['pass'];
+    $db = $_ENV['db'];
     
     $sql = "select * from users where upper(user) = '" . strtoupper($userUsername) . "'";
     

@@ -7,7 +7,9 @@
         if($result->num_rows == 1){
             while ($row = $result->fetch_assoc()){
                 $_SESSION['rootFolder'] = $row['ID'];
-                $_SESSION['folder'] = $row['ID'];
+                $_SESSION['folders'] = [];
+                $_SESSION['folders'][0] = ['ID'=>$row['ID']];
+                $_SESSION['currentFolder'] = 0;
                 echo '<script language="javascript">';
                 echo 'alert("'.$_SESSION['folder'].'")';
                 echo '</script>';
