@@ -1,13 +1,13 @@
 <?php
     
-        require('verifylogin.php');
+        require 'verifylogin.php';
     
+        require "config.php";
         if(isset($_POST["folder"])){
             $_SESSION['prevID'] = $_SESSION['currentFolder'];
             $_SESSION['currentFolder'] = $_POST['folder'];
         }
 
-        require "config.php";
         $server = $_ENV['server'];
         $user = $_ENV['user'];
         $pass = $_ENV['pass'];
@@ -19,8 +19,6 @@
         /**if(!$_SESSION['folder'] == $_SESSION['rootFolder']){
             echo "Volter: .. <button class='btn btn-primary' value= ". $row['prevID'] . " type='button'>O</button><br>";
         }*/
-        $teste = getenv('db');
-        echo $teste . "AA";
         $i = 0;
         try{    
             $conn = new mysqli($server, $user, $pass, $db);

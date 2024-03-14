@@ -1,11 +1,8 @@
 <?php
-$fh = fopen('.env','r');
-//echo $fh . '<br>';
-while ($line = fgets($fh)) {
+$file = $_SERVER['DOCUMENT_ROOT']. "/lpcs/back/.env";
+$env = file($file);
+foreach($env as $line) {
   $line = trim($line);
-  //echo $line . '<br>';
   $arr = explode('=', $line,2);
   $_ENV[$arr[0]] = $arr[1];
-  var_dump($arr);
-  echo '<br>';
 }
