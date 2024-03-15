@@ -7,12 +7,20 @@
         if($result->num_rows == 1){
             while ($row = $result->fetch_assoc()){
                 $_SESSION['rootFolder'] = $row['ID'];
+                $_SESSION['prevFolder'] = $row['ID'];
+                $_SESSION['currentFolder'] = $row['ID'];
                 $_SESSION['folders'] = [];
-                $_SESSION['folders'][0] = ['ID'=>$row['ID']];
-                $_SESSION['currentFolder'] = 0;
-                echo '<script language="javascript">';
-                echo 'alert("'.$_SESSION['folder'].'")';
-                echo '</script>';
+                $sql = "select * from paths where prevID = '" . $row['ID'] . "'";
+                $folders = $conn->query($sql);
+                $i = 0;
+                if($folders->num_rows > 0){
+                    while ($row = $folders->fetch_assoc()){
+                        $_SESSION["folders"][$i] = array(
+                            'id' => $row["ID"],
+                            'name' => $row['name']);
+                        $i++;
+                    }
+                }
             }
         }
         $conn->close();
